@@ -8,7 +8,9 @@ var app = express();
 // app.use('/static', express.static('public'));
 
 var brids = require('./brids');
-
+var _app = require('./_app');
+var _router = require('./_router');
+var _error = require('./_error');
 
 // app.get('/', function(req, res) {
 //   res.send('Hello world!');
@@ -27,11 +29,13 @@ var brids = require('./brids');
 //   );
 // });
 
-app.get('/ab*cd', function(req, res){
-  res.send('/ab*cd');
-});
+// app.get('/ab*cd', function(req, res){
+//   res.send('/ab*cd');
+// });
 
 app.use('/brids', brids);
+app.use('/app', _app);
+app.use('/router', _router);
+app.use('/error', _error);
 
-
-app.listen(3000);
+app.listen(8088);
