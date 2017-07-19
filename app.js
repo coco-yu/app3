@@ -13,6 +13,7 @@ var _router = require('./_router');
 var _error = require('./_error');
 var _jubing = require('./_jubing');
 var _route = require('./_route');
+var mysql = require('mysql.js');
 // app.get('/', function(req, res) {
 //   res.send('Hello world!');
 // });
@@ -41,4 +42,8 @@ app.use('/error', _error);
 app.use('/jubing', _jubing);
 app.use('/route', _route);
 app.use('/cookie', cookieParser());
+app.use('/mysql', mysql);
+
+
+
 app.listen(3000);
