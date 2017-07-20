@@ -85,12 +85,26 @@ var secret = express();
 
 // app.use('/admin', admin);
 
-app.disable('coco');
-app.get('coco');
+// app.disable('coco');
+// app.get('coco');
+// console.log('-------------------', app.disabled('trust proxy')); // true
+// // console.log('###################', app.enable('trust proxy'));
+// console.log('===================', app.disabled('trust proxy')); // false
 
 
-app.disabled('trust proxy');
+
 // app.enable('trust proxy');
 // app.disabled('trust proxy');
+
+
+// app.enable('trust proxy');
+// app.get('trust proxy');
+
+
+// console.log(app.enabled('trust proxy'), '--------------');
+// console.log(app.enable('trust proxy'), '--------------');
+// console.log(app.enabled('trust proxy'), '--------------');
+
+app.get('title', '--------------------');
 
 app.listen(3000);
