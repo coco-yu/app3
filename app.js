@@ -53,22 +53,24 @@ var secret = express();
 // app.use('/cookie', cookieParser());
 // app.use('/mysql', mysql);
 
-// admin.get('/', function(req, res){
-//   console.log(admin.mountpath);
-//   res.send('admin app');
-// });
+admin.get('/', function(req, res){
+  console.log(admin.mountpath);
+  res.send('admin app');
+});
 
-// secret.get('/', function(req, res){
-//   // console.log(secret.mountpath);
-//   var data = {
-//     'name': 'coco',
-//     'age' : '23'
-//   }
-//   res.send(data);
-// });
+secret.get('/', function(req, res){
+  console.log(secret.mountpath);
+  var data = {
+    'name': 'coco',
+    'age' : '23'
+  }
+  res.send(data);
+});
 
-// app.use(['/adm*n', '/manager'], admin);
-// app.use('/secr*t', secret);
+admin.use('/secr*t', secret);
+app.use(['/adm*n', '/manager'], admin);
+
+
 
 // admin.on('mount', function(parent){
 //   console.log('admin mounted');
@@ -104,7 +106,12 @@ var secret = express();
 // console.log(app.enabled('trust proxy'), '--------------');
 // console.log(app.enable('trust proxy'), '--------------');
 // console.log(app.enabled('trust proxy'), '--------------');
+var express = require('express');
+var https = require('https');
+var http = require('http');
+var app = express();
 
-app.get('title', '--------------------');
+http.createServer(app).listen(80);
+https.createServer(app).listen(443);
 
 app.listen(3000);
