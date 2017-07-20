@@ -7,13 +7,22 @@ var cookieParser = require('cookie-parser');
 // 将静态文件挂载在一个虚拟的文件夹下
 // app.use('/static', express.static('public'));
 
-var brids = require('./brids');
-var _app = require('./_app');
-var _router = require('./_router');
-var _error = require('./_error');
-var _jubing = require('./_jubing');
-var _route = require('./_route');
-var mysql = require('mysql.js');
+
+
+
+// var brids = require('./brids');
+// var _app = require('./_app');
+// var _router = require('./_router');
+// var _error = require('./_error');
+// var _jubing = require('./_jubing');
+// var _route = require('./_route');
+// var mysql = require('mysql.js');
+
+
+var admin = express();
+var secret = express();
+
+
 // app.get('/', function(req, res) {
 //   res.send('Hello world!');
 // });
@@ -35,15 +44,53 @@ var mysql = require('mysql.js');
 //   res.send('/ab*cd');
 // });
 
-app.use('/brids', brids);
-app.use('/app', _app);
-app.use('/router', _router);
-app.use('/error', _error);
-app.use('/jubing', _jubing);
-app.use('/route', _route);
-app.use('/cookie', cookieParser());
-app.use('/mysql', mysql);
+// app.use('/brids', brids);
+// app.use('/app', _app);
+// app.use('/router', _router);
+// app.use('/error', _error);
+// app.use('/jubing', _jubing);
+// app.use('/route', _route);
+// app.use('/cookie', cookieParser());
+// app.use('/mysql', mysql);
+
+// admin.get('/', function(req, res){
+//   console.log(admin.mountpath);
+//   res.send('admin app');
+// });
+
+// secret.get('/', function(req, res){
+//   // console.log(secret.mountpath);
+//   var data = {
+//     'name': 'coco',
+//     'age' : '23'
+//   }
+//   res.send(data);
+// });
+
+// app.use(['/adm*n', '/manager'], admin);
+// app.use('/secr*t', secret);
+
+// admin.on('mount', function(parent){
+//   console.log('admin mounted');
+//   console.log(parent, '========');
+// });
+
+// admin.get('/', function(req, res){
+//   res.send('admin homepage');
+// });
+
+// app.delete('/', function(req, res){
+// res.send('DELETE request to homepage');
+// });
+
+// app.use('/admin', admin);
+
+app.disable('coco');
+app.get('coco');
 
 
+app.disabled('trust proxy');
+// app.enable('trust proxy');
+// app.disabled('trust proxy');
 
 app.listen(3000);
