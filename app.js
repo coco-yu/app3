@@ -1,6 +1,14 @@
 var express = require('express');
 var app = express();
 var cookieParser = require('cookie-parser');
+var path = require('path');
+var hbs = require('hbs');
+
+app.set('views', './views');
+app.engine('html', hbs.__express);
+app.set('view engine', 'html');
+
+
 // 加载静态文件
 // app.use(express.static('public')); // 加载public文件夹下的静态文件
 
@@ -53,22 +61,22 @@ var secret = express();
 // app.use('/cookie', cookieParser());
 // app.use('/mysql', mysql);
 
-admin.get('/', function(req, res){
-  console.log(admin.mountpath);
-  res.send('admin app');
-});
+// admin.get('/', function(req, res){
+//   console.log(admin.mountpath);
+//   res.send('admin app');
+// });
 
-secret.get('/', function(req, res){
-  console.log(secret.mountpath);
-  var data = {
-    'name': 'coco',
-    'age' : '23'
-  }
-  res.send(data);
-});
+// secret.get('/', function(req, res){
+//   console.log(secret.mountpath);
+//   var data = {
+//     'name': 'coco',
+//     'age' : '23'
+//   }
+//   res.send(data);
+// });
 
-admin.use('/secr*t', secret);
-app.use(['/adm*n', '/manager'], admin);
+// admin.use('/secr*t', secret);
+// app.use(['/adm*n', '/manager'], admin);
 
 
 
@@ -106,12 +114,25 @@ app.use(['/adm*n', '/manager'], admin);
 // console.log(app.enabled('trust proxy'), '--------------');
 // console.log(app.enable('trust proxy'), '--------------');
 // console.log(app.enabled('trust proxy'), '--------------');
-var express = require('express');
-var https = require('https');
-var http = require('http');
-var app = express();
+// var express = require('express');
+// var https = require('https');
+// var http = require('http');
+// var app = express();
 
-http.createServer(app).listen(80);
-https.createServer(app).listen(443);
+// http.createServer(app).listen(80);
+// https.createServer(app).listen(443);
+
+app.get('/my', function(req, res, next){
+  var data = {
+    'name': 'coco',
+    'age': 18
+  };
+
+  data = JSON.stringify(data);
+  console.log('------------------------');
+  console.log(data);
+  console.log('------------------------');
+  res.render(path.join(__dirname, '/views/index.html'), {data: data});
+});
 
 app.listen(3000);
