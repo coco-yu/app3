@@ -129,9 +129,6 @@ app.get('/my', function(req, res, next){
   };
 
   data = JSON.stringify(data);
-  console.log('------------------------');
-  console.log(data);
-  console.log('------------------------');
   res.render(path.join(__dirname, '/views/index.html'), {data: data});
 });
 
